@@ -1,8 +1,10 @@
 package com.wkrzywiec.simplespringmvc.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class SimpleSpringMVCController {
@@ -23,5 +25,22 @@ public class SimpleSpringMVCController {
 		} else {
 			return "works";
 		}
+	}
+	
+	@GetMapping("/name")
+	public String showInputName() {
+		
+		return "name";
+	}
+	
+	@GetMapping("/processNameForm")
+	public String processInputName(
+				@RequestParam("name") String name,
+				Model model) {
+		
+		String upperName = name.toUpperCase();
+		model.addAttribute("upperName", upperName);
+		
+		return "name-display";
 	}
 }
