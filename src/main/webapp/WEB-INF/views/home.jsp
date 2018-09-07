@@ -50,16 +50,6 @@
 		</div>
 		<div class="row">
 			<div class="col">
-				Test @PostMapping & Model - provide more info
-			</div>
-		</div>
-		<div class="row">
-			<div class="col">
-				<a href="${pageContext.request.contextPath}/person" class="btn btn-primary" role="button">Provide more of your info</a>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col">
 				Test Exception Handler
 			</div>
 		</div>

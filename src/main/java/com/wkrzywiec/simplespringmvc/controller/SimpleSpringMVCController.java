@@ -2,9 +2,11 @@ package com.wkrzywiec.simplespringmvc.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class SimpleSpringMVCController {
@@ -43,4 +45,19 @@ public class SimpleSpringMVCController {
 		
 		return "name-display";
 	}
+	
+	@ExceptionHandler(NullPointerException.class)
+	public ModelAndView handleNullException(NullPointerException ex) {
+	    
+	    ModelAndView modelView = new ModelAndView("error");
+	    modelView.addObject("message", "Some major error has occured.");
+	    System.out.println(ex.getMessage());
+	    
+	    return modelView;
+	}
+	
+	 @GetMapping("/exception")
+	 public void thoreNullPointerException() {
+	   throw new NullPointerException(); 
+	 }
 }
